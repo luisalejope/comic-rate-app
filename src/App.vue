@@ -1,47 +1,46 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { onBeforeMount } from 'vue';
+import { storeToRefs } from 'pinia'
+import { useLoaderStore } from '@/stores/loader';
+import { useComicStore } from '@/stores/comic';
+import GenericLoader from '@/components/global/GenericLoader.vue';
+import ComicInfo from '@/components/ComicInfo.vue';
+
+// STORES
+const comic = useComicStore();
+const loadStore = useLoaderStore();
+const { getError } = storeToRefs(comic)
+const { getLoaderStatus } = storeToRefs(loadStore);
+const { requestComic } = comic;
+
+// LIFECYCLE HOOKS
+onBeforeMount( async() => await requestComic())
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div id="comic-container" class="mb-xl">
+    <div class="error-message" v-if="getError !== ''">
+      <h4>ERROR</h4>
+      <p>{{getError}}</p>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <ComicInfo v-else/>
+    <GenericLoader v-show="getLoaderStatus" />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
+<style lang='scss' scoped>
+#comic-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .error-message {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: $error-message;
   }
 }
+
 </style>

@@ -1,0 +1,131 @@
+// Resetting some default styles
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    font-weight: normal;
+}
+
+// Basic styles
+
+body {
+    display: flex;
+    min-height: 100vh;
+    font-family: $font-family;
+    font-size: $base-font-size;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+    margin-bottom: $base-spacing;
+}
+
+a {
+    text-decoration: none;
+    color: $primary-color;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+input {
+    border: none;
+    width: 100%;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+#app {
+    width: 100%;
+}
+
+.template-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.button-xxs {
+    width: 1rem;
+}
+.button-xs {
+    width: 1rem;
+}
+.button-s {
+    width: 1rem;
+}
+.button-n {
+    width: 1rem;
+}
+.button-m {
+    width: 1rem;
+}
+.button-l {
+    width: 1rem;
+}
+
+.mt-xxs {
+    margin-top: 0.25rem;
+}
+.mt-xs {
+    margin-top: 0.5rem;
+}
+.mt-s {
+    margin-top: 0.75rem;
+}
+.mt-n {
+    margin-top: 1rem;
+}
+.mt-m {
+    margin-top: 1.25rem;
+}
+.mt-l {
+    margin-top: 1.5rem;
+}
+.mt-xl {
+    margin-top: 1.75rem;
+}
+.mt-xxl {
+    margin-top: 2rem;
+}
+
+.mb-xxs {
+    margin-bottom: 0.25rem;
+}
+.mb-xs {
+    margin-bottom: 0.5rem;
+}
+.mb-s {
+    margin-bottom: 0.75rem;
+}
+.mb-n {
+    margin-bottom: 1rem;
+}
+.mb-m {
+    margin-bottom: 1.25rem;
+}
+.mb-l {
+    margin-bottom: 1.5rem;
+}
+.mb-xl {
+    margin-bottom: 1.75rem;
+}
+.mb-xxl {
+    margin-bottom: 2rem;
+}
